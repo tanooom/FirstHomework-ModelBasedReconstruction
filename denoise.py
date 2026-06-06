@@ -9,6 +9,9 @@ from IPPy.utilities import load_image, save_image, normalize
 
 results_dir = Path("denoise_results")
 
+device = utilities.get_device()
+print(f"Device used: {device}.")
+
 #carico immagine scaricata dal dataset mayo
 #load image mi torna già tensore (1,1,H,W) float 32 pronto per i solver
 x_true = load_image("12_mayo.png")
