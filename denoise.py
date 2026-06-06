@@ -1,10 +1,6 @@
 import torch
-import numpy as np
 import matplotlib.pyplot as plt
-from skimage import data
-from skimage.color import rgb2gray
 from skimage.transform import resize
-from PIL import Image
 from pathlib import Path
 
 from IPPy import operators, solvers, utilities
@@ -13,11 +9,9 @@ from IPPy.utilities import load_image, save_image, normalize
 
 results_dir = Path("denoise_results")
 
-#salvo immagine sul disco in modo da poter utilizzare load_imade direttamente da IPPy
-#mi restituisce un tensore (1,1,512,512) pronto per il solver
-img = (rgb2gray(data.astronaut()) * 255).astype(np.uint8)
-Image.fromarray(img).save("astronaut.png")
-x_true = load_image("astronaut.png")
+#carico immagine scaricata dal dataset mayo
+#load image mi torna già tensore (1,1,H,W) float 32 pronto per i solver
+x_true = load_image("12_mayo.png")
 print(f"Shape GT: {list(x_true.shape)}")
 
 
